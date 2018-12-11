@@ -1,18 +1,18 @@
 ---
-Title: Unidirectional Replication with Replica of
+Title: Unidirectional Replication with _Replica Of_
 description: 
 weight: $weight
 alwaysopen: false
 categories: ["RS"]
 ---
-*Replica of* is a feature of Redis Enterprise Software (RS) where an
+*Replica Of* is a feature of Redis Enterprise Software (RS) where an
 administrator designates a database to be a replica (destination) of one
 or more databases (sources). Once you have done so and the initial data
 load from source to destination is completed, all write commands are
 synchronized from the source(s) to the destination. This allows you to
 keep a database (destination) that is an exact replica of a database.
 
-ReplicaOf is uni-directional replication between databases, either
+_Replica Of_ is uni-directional replication between databases, either
 within a cluster or between clusters. It should not be confused with
 [Geo-Replication via
 CRDBs]({{< relref "/rs/administering/intercluster-replication/crdbs.md" >}}),
@@ -25,7 +25,7 @@ In addition, this feature can be used for carrying out a one-time
 synchronization of a database, either within RS or external to RS, to
 another database.
 
-The *Replica of* is defined in the context of the destination database
+The *Replica Of* is defined in the context of the destination database
 by specifying the source databases.
 
 A destination database can have a maximum of thirty-two (32) source
@@ -39,17 +39,17 @@ result, commands that were executed in a certain order when compared
 across source databases might be executed in a different order on the
 destination database.
 
-**Note:** The *Replica of* feature should not be confused with the
+**Note:** The *Replica Of* feature should not be confused with the
 in-memory [Database
 replication]({{< relref "/rs/concepts/high-availability/replication.md" >}})
 feature, which is used for creating a master / slave configuration that
 enables ensuring database high-availability.
 
-For a quick overview of ReplicaOf capabilities watch this quick video.
+For a quick overview of _Replica Of_ capabilities watch this quick video.
 
 {{< youtube AG-XGn7BQkQ >}}
 
-## Replica of sources
+## _Replica Of_ sources
 
 RS has a security mechanism in which an internal admin password is
 assigned to each database. This password helps protect the database from
@@ -73,10 +73,10 @@ can be Redis databases that are not part of an RS.
     the same exact format as indicated above (except for the
     **\[database name\]:** prefix), but in this case, the URL does not
     show up as an option in the UI. In order to configure the target
-    database as a replica of a database from a different RS, you need to
+    database as a _Replica Of_ a database from a different RS, you need to
     extract the source database URL, including the internal admin
     password, from the source database. This can be done in the UI from
-    the source database page by clicking the **Get Replica of source
+    the source database page by clicking the **Get _Replica Of_ source
     URL** link next to the Endpoint field. In addition, you can
     regenerate the internal admin password from the same UI. If you
     regenerate the internal admin password, any existing replica
@@ -85,7 +85,7 @@ can be Redis databases that are not part of an RS.
 - **Compression:** when a source database is located on a different
     Redis Enterprise Software cluster, there is also an option to enable
     compression of the data being replicated. For additional details,
-    refer to the ["Replica of" data
+    refer to the [_Replica Of_ data
     compression]({{< relref "/rs/administering/intercluster-replication/replica-of.md#Replica-of-data-compression" >}})
     section.
 - When a source database is external to a Redis Enterprise Software
