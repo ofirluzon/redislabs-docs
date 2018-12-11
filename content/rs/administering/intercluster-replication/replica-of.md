@@ -1,18 +1,18 @@
 ---
-Title: Unidirectional Replication with Replica of
+Title: Unidirectional Replication with _Replica Of_
 description: 
 weight: $weight
 alwaysopen: false
 categories: ["RS"]
 ---
-*Replica of* is a feature of Redis Enterprise Software (RS) where an
+_Replica Of_ is a feature of Redis Enterprise Software (RS) where an
 administrator designates a database to be a replica (destination) of one
 or more databases (sources). Once you have done so and the initial data
 load from source to destination is completed, all write commands are
 synchronized from the source(s) to the destination. This allows you to
 keep a database (destination) that is an exact replica of a database.
 
-ReplicaOf is uni-directional replication between databases, either
+_Replica Of_ is uni-directional replication between databases, either
 within a cluster or between clusters. It should not be confused with
 [Geo-Replication via
 CRDBs]({{< relref "/rs/administering/intercluster-replication/crdbs.md" >}}),
@@ -25,7 +25,7 @@ In addition, this feature can be used for carrying out a one-time
 synchronization of a database, either within RS or external to RS, to
 another database.
 
-The *Replica of* is defined in the context of the destination database
+The _Replica Of_ is defined in the context of the destination database
 by specifying the source databases.
 
 A destination database can have a maximum of thirty-two (32) source
@@ -39,17 +39,17 @@ result, commands that were executed in a certain order when compared
 across source databases might be executed in a different order on the
 destination database.
 
-**Note:** The *Replica of* feature should not be confused with the
+**Note:** The _Replica Of_ feature should not be confused with the
 in-memory [Database
 replication]({{< relref "/rs/concepts/high-availability/replication.md" >}})
 feature, which is used for creating a master / slave configuration that
 enables ensuring database high-availability.
 
-For a quick overview of ReplicaOf capabilities watch this quick video.
+For a quick overview of _Replica Of_ capabilities watch this quick video.
 
 {{< youtube AG-XGn7BQkQ >}}
 
-## Replica of sources
+## _Replica Of_ sources
 
 RS has a security mechanism in which an internal admin password is
 assigned to each database. This password helps protect the database from
@@ -73,10 +73,10 @@ can be Redis databases that are not part of an RS.
     the same exact format as indicated above (except for the
     **\[database name\]:** prefix), but in this case, the URL does not
     show up as an option in the UI. In order to configure the target
-    database as a replica of a database from a different RS, you need to
+    database as a _Replica Of_ a database from a different RS, you need to
     extract the source database URL, including the internal admin
     password, from the source database. This can be done in the UI from
-    the source database page by clicking the **Get Replica of source
+    the source database page by clicking the **Get _Replica Of_ source
     URL** link next to the Endpoint field. In addition, you can
     regenerate the internal admin password from the same UI. If you
     regenerate the internal admin password, any existing replica
@@ -85,7 +85,7 @@ can be Redis databases that are not part of an RS.
 - **Compression:** when a source database is located on a different
     Redis Enterprise Software cluster, there is also an option to enable
     compression of the data being replicated. For additional details,
-    refer to the ["Replica of" data
+    refer to the [_Replica Of_ data
     compression]({{< relref "/rs/administering/intercluster-replication/replica-of.md#Replica-of-data-compression" >}})
     section.
 - When a source database is external to a Redis Enterprise Software
@@ -105,7 +105,7 @@ restarted from scratch for all the source databases.
 
 **Note:** If you used the mDNS protocol when naming the cluster name
 (FQDN), ensure that the client mDNS perquisites are met in order for the
-*Replica of* feature to work. For additional details, refer to the
+_Replica Of_ feature to work. For additional details, refer to the
 [Client prerequisites for
 mDNS]({{< relref "/rs/administering/installing-upgrading/configuring/mdns.md" >}}).
 
@@ -134,7 +134,7 @@ or by the system - the user can restart the process. **Restarting the
 process causes the synchronization process to flush the DB and restart
 the process from the beginning**.
 
-### Replica of status
+### _Replica Of_ status
 
 The replication process can have the following statuses:
 
@@ -157,8 +157,8 @@ the source was executed on the destination.
 The system also displays the destination database status as an aggregate
 of the statuses of all the sources.
 
-**Note:** If you encounter issues with the *Replica of* process, refer
-to the troubleshooting section [Replica of repeatedly
+**Note:** If you encounter issues with the _Replica Of_ process, refer
+to the troubleshooting section [_Replica Of_ repeatedly
 fails]({{< relref "/rs/administering/troubleshooting/replicaof-repeatedly-fails.md" >}}).
 
 ### Synchronization errors
@@ -191,19 +191,19 @@ stop:
 
 ## Encryption
 
-ReplicaOf supports the ability to encrypt uni-directional replication
+_Replica Of_ supports the ability to encrypt uni-directional replication
 communications between source and destination clusters utilizing TLS 1.2
 based encryption. To enable this encryption, proceed through the
 following steps:
 
-**ReplicaOf's Source Database:**
+**_Replica Of's_ Source Database:**
 
 1. Edit and mark **SSL Authentication** for the source Database of the
-    ReplicaOf, and choose when SSL is required:
+    _Replica Of_, and choose when SSL is required:
    - **SSL for Replication Only **enforce SSL for the communication
-        between the source and the destination of the ReplicaOf
+        between the source and the destination of the _Replica Of_
    - **SSL for All Communications **enforce SSL for both- application
-        communication as well as ReplicaOf communication:
+        communication as well as _Replica Of_ communication:
         ![Replic-of
         Encryption](/images/rs/Screen-Shot-2018-03-29-at-10.17.59-PM.png?width=1728&height=316)
         Replic-of Encryption
@@ -215,9 +215,9 @@ following steps:
     Replica-of Encryption - certificate
 1. Save the certificate and **Update** the database changes.
 
-**ReplicaOf's Destination Database:**
+**_Replica Of's_ Destination Database:**
 
-1. Edit the 'Replica of' section of the destination Database to point
+1. Edit the _Replica Of_ section of the destination Database to point
     the source Database and press the 'Enable SSL Authentication' icon:
     ![Replica-of
     Destination](/images/rs/Screen-Shot-2018-03-29-at-10.48.18-PM.png?width=1608&height=178)
@@ -232,9 +232,9 @@ following steps:
 3. Press the **Continue** button, save the certificate and **Update**
     the database changes.
 
-## Data compression for Replica Of
+## Data compression for _Replica Of_
 
-When the *Replica of* is defined across different Redis Enterprise
+When the _Replica Of_ is defined across different Redis Enterprise
 Software clusters, it may be beneficial to compress the data that flows
 through the network (depending on where the clusters physically reside
 and the available network).
@@ -262,7 +262,7 @@ It is advised that you test compression out in a lower environment
 before enabling it in production.
 
 In the Redis Enterprise Software management UI, when designating a
-*Replica of* source from a different Redis Enterprise Software cluster,
+_Replica Of_ source from a different Redis Enterprise Software cluster,
 there is also an option to enable compression. When enabled, gzip
 compression with level -6 is utilized.
 
